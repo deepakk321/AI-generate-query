@@ -9,7 +9,9 @@ def get_user_query():
     return input("Enter your query message: ")
 
 def generate_sql(schema, user_query):
-    api_key = "AIzaSyDa1jSnlXMUf9pXe4UPeo1nGIqeqkbJqvg" #os.getenv("GOOGLE_API_KEY")
+    # Read API key from environment for safety. Set GOOGLE_API_KEY in your environment
+    # or create a local .env file and load it before running Streamlit (see README).
+    api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
         raise Exception("Set GOOGLE_API_KEY environment variable.")
     genai.configure(api_key=api_key)
